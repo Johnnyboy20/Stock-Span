@@ -1,0 +1,46 @@
+#include <iostream>
+#include <stack>
+#include <fstream>
+using namespace std;
+
+int *span2 (int X[], int n)
+
+{
+    int *s = new int[n];
+    stack<int> A;
+    for (int i=0; i<=n-1; ++i)
+{
+    while (!A.empty() && X[A.top()] <= X[i])
+    {
+          A.pop();
+    }
+   
+    if(A.empty())
+    s[i] = i+1;
+    else s[i] = i-A.top();
+    A.push (i);
+}  
+  
+return s;
+}
+ 
+int main()
+{
+
+
+{
+    int P[] = {5, 9, 3, 6, 10};
+    int *span;
+    span = span2 (P, 5);
+    for (int i=0; i<5; ++i)
+    cout<< span[i] <<endl;
+    
+    }
+
+    
+    system ("pause");
+    return 1;
+}
+    
+ 
+ 
